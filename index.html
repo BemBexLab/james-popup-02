@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en" class="bg-[#f8f6fa] text-[#3f484e]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f6fa" />
+    <title>Dance Team Battle · Student Creative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="index.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="m-0 font-[Manrope,Arial,sans-serif]">
+    <main
+      data-ui="battle-page"
+      x-data="danceBattle"
+      class="mx-auto w-[calc(100%_-_48px)] max-w-[1066px] pb-[94px] min-[1266px]:zoom-[clamp(1,calc(100vw/1266px),1.5122)] max-[1024px]:max-w-[680px] max-[640px]:w-[calc(100%_-_32px)] max-[640px]:pb-10"
+    >
+      <header
+        data-ui="hero"
+        class="relative h-[260px] overflow-hidden max-[1024px]:h-[240px] max-[640px]:h-[310px]"
+      >
+        <div class="relative z-10 pt-[56px] max-[1024px]:pt-9 max-[640px]:pt-6">
+          <div
+            class="flex items-center gap-[18px] text-[23px] font-bold uppercase tracking-[5px] max-[1024px]:text-[17px] max-[1024px]:tracking-[4px] max-[640px]:gap-3 max-[640px]:text-xs max-[640px]:tracking-[3px]"
+          >
+            <span class="whitespace-nowrap">Student Creative</span>
+            <span
+              class="h-[2px] w-[156px] bg-[#FFD334] max-[1024px]:w-20 max-[640px]:w-14"
+              aria-hidden="true"
+            ></span>
+          </div>
+          <h1
+            class="mt-[21px] text-[52px] leading-[1.2] font-extrabold uppercase tracking-[-1.7px] max-[1024px]:max-w-[390px] max-[1024px]:text-[42px] max-[640px]:mt-4 max-[640px]:max-w-none max-[640px]:text-[clamp(28px,7.5vw,36px)]"
+          >
+            Dance Team <span class="text-[#FFD334]">Battle</span>
+          </h1>
+        </div>
+        <div
+          class="absolute top-0 right-0 h-full w-[460px] max-[1024px]:right-[-70px] max-[1024px]:opacity-60 max-[640px]:top-auto max-[640px]:right-0 max-[640px]:bottom-0 max-[640px]:h-[175px] max-[640px]:w-[300px] max-[640px]:opacity-100"
+          aria-hidden="true"
+        >
+          <div
+            class="absolute -top-10 left-[192px] h-[360px] w-[136px] -skew-x-[17deg] bg-[#ffd531] max-[640px]:left-[160px] max-[640px]:w-[95px]"
+          ></div>
+          <img
+            src="assets/Dance.png"
+            alt=""
+            class="absolute top-[50px] left-[25px] w-[420px] max-w-none opacity-60 max-[640px]:top-[25px] max-[640px]:left-0 max-[640px]:w-[290px]"
+          />
+          <img
+            src="assets/image 7.png"
+            alt=""
+            class="absolute top-[15px] left-[55px] w-[430px] max-w-none max-[640px]:-top-2 max-[640px]:left-5 max-[640px]:w-[300px]"
+          />
+        </div>
+      </header>
+
+      <section
+        data-ui="battle-stats"
+        class="grid min-h-[97px] grid-cols-[1fr_1.15fr_0.83fr] items-center rounded-[7px] border border-[#e7e6eb] bg-[#f7f7fb] max-[480px]:grid-cols-1 max-[480px]:px-5"
+        aria-label="Battle overview"
+      >
+        <template x-for="(stat, index) in stats" :key="stat.id">
+          <div
+            class="flex min-w-0 items-center justify-center gap-[21px] py-3 min-[480px]:h-12 max-[1024px]:gap-3 max-[480px]:justify-start max-[480px]:gap-5 max-[480px]:py-4"
+            :class="{ 'border-[#dddde3] min-[480px]:border-l max-[480px]:border-t': index > 0, 'min-[1024px]:justify-start min-[1024px]:pl-[62px]': index === 0, 'min-[1024px]:justify-end min-[1024px]:pr-[62px]': index === 2 }"
+          >
+            <img
+              :src="stat.icon"
+              alt=""
+              class="h-8 w-8 shrink-0 object-contain max-[640px]:h-6 max-[640px]:w-6"
+            />
+            <div class="min-w-0">
+              <p
+                class="mb-[7px] text-[12px] leading-4 tracking-[-0.3px] max-[640px]:text-[11px]"
+                x-text="stat.label"
+              ></p>
+              <strong
+                class="block text-[22px] leading-6 font-bold tracking-[-0.65px] max-[640px]:text-lg"
+                x-text="stat.value"
+              ></strong>
+            </div>
+          </div>
+        </template>
+      </section>
+      <template x-if="loadError"
+        ><p role="alert" class="mt-6 text-sm text-red-700">
+          The battle details could not load.
+          <button type="button" class="underline" @click="loadBattle()">
+            Try again
+          </button>
+        </p></template
+      >
+
+      <section
+        data-ui="matchup"
+        class="mt-[40px] grid grid-cols-[minmax(0,1fr)_63px_minmax(0,1fr)_63px_minmax(0,1fr)] items-center max-[1024px]:mx-auto max-[1024px]:max-w-[480px] max-[1024px]:grid-cols-1 max-[1024px]:gap-4 max-[640px]:mt-6"
+        aria-label="Competing dance teams"
+      >
+        <template x-for="(team, index) in teams" :key="team.id">
+          <div class="contents">
+            <article
+              data-ui="team-card"
+              class="min-w-0 border border-[#e7e7eb] bg-[#f6f7f9] px-2 pt-[9px] pb-[9px] min-[1024px]:min-h-[270px]"
+            >
+              <div class="relative aspect-[296/129] w-full overflow-hidden">
+                <img
+                  :src="team.image"
+                  :alt="team.imageAlt"
+                  class="block h-full w-full object-cover"
+                />
+                <span
+                  class="absolute top-[6px] right-[9px] inline-flex h-[21px] items-center gap-1 rounded-[3px] bg-white px-[5px] text-[8px] font-normal text-[#edbf16]"
+                >
+                  <svg
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-[9px] w-[9px]"
+                    aria-hidden="true"
+                  >
+                    <path d="m2 11 4-4 3 2 5-6m-4 0h4v4" />
+                  </svg>
+                  <span x-text="'C-Index: ' + team.creativeIndex"></span>
+                </span>
+              </div>
+              <div
+                class="mt-[13px] flex min-h-[47px] min-w-0 items-center gap-5 max-[380px]:gap-3"
+              >
+                <img
+                  :src="team.avatar"
+                  :alt="team.creator + ' portrait'"
+                  class="h-[46px] w-[46px] shrink-0 object-cover"
+                />
+                <div class="min-w-0">
+                  <h2
+                    class="text-[13px] leading-[18px] font-bold tracking-[-0.5px] break-words"
+                    x-text="team.title"
+                  ></h2>
+                  <p
+                    class="mt-[3px] text-[12px] leading-[17px] tracking-[-0.45px] text-[#777]"
+                    x-text="team.description"
+                  ></p>
+                </div>
+              </div>
+              <div
+                class="mt-[27px] flex min-h-8 items-center gap-[17px] max-[380px]:gap-2"
+              >
+                <div class="mr-auto min-w-0">
+                  <h3
+                    class="text-[13px] leading-[17px] font-bold tracking-[-0.45px]"
+                    x-text="team.creator"
+                  ></h3>
+                  <p
+                    class="text-[11px] leading-4 tracking-[-0.5px] text-[#777]"
+                    x-text="team.subscribers"
+                  ></p>
+                </div>
+                <button
+                  data-ui="subscribe"
+                  type="button"
+                  class="flex h-6 min-w-[78px] shrink-0 items-center justify-center gap-[5px] border border-[#e3e4e8] bg-transparent px-[5px] text-[10px] leading-[14px] whitespace-nowrap hover:bg-[#fff3bb] aria-pressed:bg-[#fff3bb] max-[1024px]:h-9"
+                  :aria-pressed="team.subscribed"
+                  @click="team.subscribed = !team.subscribed"
+                >
+                  <img
+                    src="assets/Vector.svg"
+                    alt=""
+                    class="h-[9px] w-2 shrink-0"
+                  /><span
+                    x-text="team.subscribed ? 'Subscribed' : 'Subscribe'"
+                  ></span>
+                </button>
+                <span
+                  class="flex h-8 w-[38px] shrink-0 items-center justify-center border-l border-[#e2e3e6] text-[12px] font-bold"
+                  :aria-label="team.memberCount + ' team members'"
+                  x-text="team.memberCount"
+                ></span>
+              </div>
+            </article>
+            <template x-if="index < teams.length - 1"
+              ><div
+                class="grid h-[33px] w-[33px] place-items-center justify-self-center bg-[#ffd334] text-[12px] font-semibold max-[1024px]:h-10 max-[1024px]:w-10 max-[1024px]:text-base"
+                aria-label="versus"
+              >
+                VS
+              </div></template
+            >
+          </div>
+        </template>
+      </section>
+
+      <section
+        data-ui="gallery"
+        class="mx-auto mt-[38px] flex w-fit max-w-full items-center gap-[26px] max-[640px]:w-full max-[640px]:gap-3"
+        aria-label="Battle photo gallery"
+        @keydown.arrow-left.prevent="selectSlide(activeSlide - 1)"
+        @keydown.arrow-right.prevent="selectSlide(activeSlide + 1)"
+      >
+        <button
+          type="button"
+          class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#efedf0] bg-[#f9fafb] p-0 text-[#ffcc00] shadow-[0_8px_15px_#30334415] hover:bg-[#fff2b4] max-[640px]:h-9 max-[640px]:w-9"
+          aria-label="Previous photo"
+          @click="selectSlide(activeSlide - 1)"
+        >
+          <svg
+            class="h-3 w-3"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m10 3-5 5 5 5" />
+          </svg>
+        </button>
+        <div
+          x-ref="thumbnails"
+          class="flex min-w-0 items-center gap-[14px] overflow-x-auto py-px max-[640px]:gap-2"
+        >
+          <template x-for="(slide, index) in slides" :key="slide.id">
+            <button
+              data-ui="thumbnail"
+              type="button"
+              class="block h-[70px] w-[112px] shrink-0 border bg-transparent p-[3px] transition-opacity max-[640px]:h-14 max-[640px]:w-[88px]"
+              :class="activeSlide === index ? 'border-[#ffd334] opacity-100' : 'border-[#e6e5eb] opacity-40 hover:opacity-100'"
+              :aria-label="'View ' + slide.alt"
+              :aria-pressed="activeSlide === index"
+              @click="openPreview(index)"
+            >
+              <img
+                :src="slide.thumbnail"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </button>
+          </template>
+        </div>
+        <button
+          type="button"
+          class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#efedf0] bg-[#f9fafb] p-0 text-[#ffcc00] shadow-[0_8px_15px_#30334415] hover:bg-[#fff2b4] max-[640px]:h-9 max-[640px]:w-9"
+          aria-label="Next photo"
+          @click="selectSlide(activeSlide + 1)"
+        >
+          <svg
+            class="h-3 w-3"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m6 3 5 5-5 5" />
+          </svg>
+        </button>
+      </section>
+      <dialog
+        x-ref="preview"
+        class="m-auto w-[min(800px,calc(100%_-_32px))] max-h-[calc(100dvh_-_32px)] overflow-auto rounded-lg border border-[#e7e7eb] bg-[#f8f6fa] p-4 backdrop:bg-black/60"
+        aria-label="Battle photo preview"
+        @click="if ($event.target === $el) $el.close()"
+        @close="document.body.style.overflow = ''"
+      >
+        <div class="mb-3 flex items-center justify-between gap-4">
+          <p
+            class="text-sm font-semibold"
+            x-text="slides[activeSlide]?.alt"
+          ></p>
+          <button
+            type="button"
+            class="grid h-9 w-9 shrink-0 place-items-center text-2xl"
+            aria-label="Close preview"
+            @click="$refs.preview.close()"
+          >
+            &times;
+          </button>
+        </div>
+        <template x-if="slides.length"
+          ><img
+            :src="slides[activeSlide].image"
+            :alt="slides[activeSlide].alt"
+            class="mx-auto max-h-[70dvh] w-full object-contain"
+        /></template>
+      </dialog>
+    </main>
+  </body>
+</html>

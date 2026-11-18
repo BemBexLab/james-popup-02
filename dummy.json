@@ -1,0 +1,95 @@
+{
+  "stats": [
+    {
+      "id": "winning-reward",
+      "icon": "assets/Mask group.png",
+      "label": "Winning Team Reward",
+      "value": "50.00 USD"
+    },
+    {
+      "id": "final-round",
+      "icon": "assets/Mask group (1).png",
+      "label": "Final Round",
+      "value": "1,000.00 USD"
+    },
+    {
+      "id": "battle-period",
+      "icon": "assets/Mask group (2).png",
+      "label": "Battle period",
+      "value": "30 days"
+    }
+  ],
+  "teams": [
+    {
+      "id": "team-one",
+      "image": "assets/Rectangle 5 (1).png",
+      "imageAlt": "Breakdancer on a purple-lit dance floor",
+      "avatar": "assets/Rectangle 6.png",
+      "creativeIndex": "12233",
+      "title": "Test for PlayGround in Approved Task",
+      "description": "Lorem Ipsum is simply dummy text",
+      "creator": "Vickey Roy",
+      "subscribers": "11.5 M subs",
+      "memberCount": 3,
+      "subscribed": false
+    },
+    {
+      "id": "team-two",
+      "image": "assets/Rectangle 5.png",
+      "imageAlt": "Dancer in a colorful studio",
+      "avatar": "assets/Rectangle 6 (1).png",
+      "creativeIndex": "10123",
+      "title": "Fuga Ea quia cum eo",
+      "description": "Lorem Ipsum is simply dummy text",
+      "creator": "Vickey Roy",
+      "subscribers": "11.5 M subs",
+      "memberCount": 10,
+      "subscribed": false
+    },
+    {
+      "id": "team-three",
+      "image": "assets/Rectangle 51.png",
+      "imageAlt": "Dancer surrounded by red smoke",
+      "avatar": "assets/Rectangle 6 (1).png",
+      "creativeIndex": "11143",
+      "title": "Project Test for INDEX Jan IO 10:38AM",
+      "description": "Lorem Ipsum is simply dummy text",
+      "creator": "Vickey Roy",
+      "subscribers": "11.5 M subs",
+      "memberCount": 20,
+      "subscribed": false
+    }
+  ],
+  "slides": [
+    {
+      "id": "photo-one",
+      "image": "assets/Rectangle 5.png",
+      "thumbnail": "assets/Rectangle 11.png",
+      "alt": "Dancer in a colorful studio"
+    },
+    {
+      "id": "photo-two",
+      "image": "assets/Rectangle 5.png",
+      "thumbnail": "assets/Rectangle 5.png",
+      "alt": "Studio dance performance"
+    },
+    {
+      "id": "photo-three",
+      "image": "assets/Rectangle 51.png",
+      "thumbnail": "assets/Rectangle 51.png",
+      "alt": "Dancer surrounded by red smoke"
+    },
+    {
+      "id": "photo-four",
+      "image": "assets/Rectangle 5 (1).png",
+      "thumbnail": "assets/Rectangle 5 (1).png",
+      "alt": "Breakdance performance"
+    },
+    {
+      "id": "photo-five",
+      "image": "assets/Rectangle 5.png",
+      "thumbnail": "assets/Rectangle 11.png",
+      "alt": "Dance studio performance"
+    }
+  ]
+}
