@@ -42,10 +42,5 @@ document.addEventListener("alpine:init", () => {
         });
       });
     },
-    openPreview(index) {
-      this.selectSlide(index);
-      this.$refs.preview.showModal();
-      document.body.style.overflow = "hidden";
-    },
   }));
 });

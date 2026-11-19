@@ -238,9 +238,9 @@
               type="button"
               class="block h-[70px] w-[112px] shrink-0 border bg-transparent p-[3px] transition-opacity max-[640px]:h-14 max-[640px]:w-[88px]"
               :class="activeSlide === index ? 'border-[#ffd334] opacity-100' : 'border-[#e6e5eb] opacity-40 hover:opacity-100'"
-              :aria-label="'View ' + slide.alt"
+              :aria-label="'Select ' + slide.alt"
               :aria-pressed="activeSlide === index"
-              @click="openPreview(index)"
+              @click="selectSlide(index)"
             >
               <img
                 :src="slide.thumbnail"
@@ -270,34 +270,6 @@
           </svg>
         </button>
       </section>
-      <dialog
-        x-ref="preview"
-        class="m-auto w-[min(800px,calc(100%_-_32px))] max-h-[calc(100dvh_-_32px)] overflow-auto rounded-lg border border-[#e7e7eb] bg-[#f8f6fa] p-4 backdrop:bg-black/60"
-        aria-label="Battle photo preview"
-        @click="if ($event.target === $el) $el.close()"
-        @close="document.body.style.overflow = ''"
-      >
-        <div class="mb-3 flex items-center justify-between gap-4">
-          <p
-            class="text-sm font-semibold"
-            x-text="slides[activeSlide]?.alt"
-          ></p>
-          <button
-            type="button"
-            class="grid h-9 w-9 shrink-0 place-items-center text-2xl"
-            aria-label="Close preview"
-            @click="$refs.preview.close()"
-          >
-            &times;
-          </button>
-        </div>
-        <template x-if="slides.length"
-          ><img
-            :src="slides[activeSlide].image"
-            :alt="slides[activeSlide].alt"
-            class="mx-auto max-h-[70dvh] w-full object-contain"
-        /></template>
-      </dialog>
     </main>
   </body>
 </html>
