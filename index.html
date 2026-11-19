@@ -18,6 +18,23 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
     ></script>
     <style>
+      @font-face {
+        font-family: "Hero Lato";
+        src: url("assets/vendor/lato-700.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Hero Lato";
+        src: url("assets/vendor/lato-900.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+      }
+      [data-ui="hero"] {
+        font-family: "Hero Lato", Arial, sans-serif;
+      }
       .image-frame {
         position: relative;
         overflow: hidden;
@@ -78,9 +95,10 @@
         data-ui="hero"
         class="relative h-[260px] overflow-hidden max-[1024px]:h-[240px] max-[640px]:h-[310px]"
       >
-        <div class="relative z-10 pt-[56px] max-[1024px]:pt-9 max-[640px]:pt-6">
+        <div data-ui="hero-copy" class="relative z-10 pt-[56px] max-[1024px]:pt-9 max-[640px]:pt-6">
           <div
-            class="flex items-center gap-[18px] text-[23px] font-bold uppercase tracking-[5px] max-[1024px]:text-[17px] max-[1024px]:tracking-[4px] max-[640px]:gap-3 max-[640px]:text-xs max-[640px]:tracking-[3px]"
+            data-ui="eyebrow"
+            class="flex items-center gap-[18px] text-[24px] font-bold uppercase tracking-[4.8px] max-[1024px]:text-[17px] max-[1024px]:tracking-[4px] max-[640px]:gap-3 max-[640px]:text-xs max-[640px]:tracking-[3px]"
           >
             <span class="whitespace-nowrap">Student Creative</span>
             <span
@@ -89,23 +107,39 @@
             ></span>
           </div>
           <h1
-            class="mt-[21px] text-[52px] leading-[1.2] font-extrabold uppercase tracking-[-1.7px] max-[1024px]:max-w-[390px] max-[1024px]:text-[42px] max-[640px]:mt-4 max-[640px]:max-w-none max-[640px]:text-[clamp(28px,7.5vw,36px)]"
+            class="mt-[21px] text-[52px] leading-[1.2] font-black uppercase tracking-[-1.6px] max-[1024px]:max-w-[390px] max-[1024px]:text-[42px] max-[640px]:mt-4 max-[640px]:max-w-none max-[640px]:text-[clamp(28px,7.5vw,36px)]"
           >
             Dance Team <span class="text-[#FFD334]">Battle</span>
           </h1>
         </div>
         <div
+          data-ui="hero-art"
           class="absolute top-0 right-0 h-full w-[460px] max-[1024px]:right-[-70px] max-[1024px]:opacity-60 max-[640px]:top-auto max-[640px]:right-0 max-[640px]:bottom-0 max-[640px]:h-[175px] max-[640px]:w-[300px] max-[640px]:opacity-100"
           aria-hidden="true"
         >
           <div
-            class="absolute -top-10 left-[192px] h-[360px] w-[136px] -skew-x-[17deg] bg-[#ffd531] max-[640px]:left-[160px] max-[640px]:w-[95px]"
+            data-ui="yellow-stripe"
+            class="absolute -top-10 left-[190px] h-[360px] w-[136px] -skew-x-[16deg] bg-[#ffd531] max-[640px]:left-[160px] max-[640px]:w-[95px]"
           ></div>
-          <img
-            src="assets/Dance.png"
-            alt=""
-            class="absolute top-[50px] left-[25px] w-[420px] max-w-none opacity-60 max-[640px]:top-[25px] max-[640px]:left-0 max-[640px]:w-[290px]"
-          />
+          <svg
+            data-ui="dance-outline"
+            class="absolute top-[51px] left-[25px] w-[428px] overflow-visible max-[640px]:top-[25px] max-[640px]:left-0 max-[640px]:w-[290px]"
+            viewBox="0 0 410 100"
+            fill="none"
+            stroke="#faecca"
+            stroke-width="0.8"
+            focusable="false"
+          >
+            <text
+              x="12"
+              y="90"
+              textLength="402"
+              lengthAdjust="spacingAndGlyphs"
+              font-size="120"
+              font-weight="900"
+              transform="skewX(-10)"
+            >DANCE</text>
+          </svg>
           <img
             src="assets/image 7.png"
             alt=""
